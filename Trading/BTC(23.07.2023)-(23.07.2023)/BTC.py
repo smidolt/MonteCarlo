@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-data = pd.read_csv("price.csv") # загрузить данные из файла CSV
-price = np.array(data["Цена"]).astype(float) # выбрать столбец Price и преобразовать его в массив numpy
+data = pd.read_csv("prices.csv") # загрузить данные из файла CSV
+price = np.array(data["Price"]).astype(float) # выбрать столбец Price и преобразовать его в массив numpy
 returns = np.diff(price) / price[:-1] # посчитать доходность за каждый день
 drift = np.mean(returns) * 252 # посчитать drift как среднюю доходность за год (умножаем на 252, потому что в году 252 торговых дня)
 volatility = np.std(returns) * np.sqrt(252) # посчитать volatility как стандартное отклонение доходности за год (умножаем на корень из 252, потому что это масштабирует volatility на годовой уровень)
